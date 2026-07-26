@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">DegenRef Escape maskable pictogram</title>
+  <desc id="desc">Een ruim donker apppictogram met pisteaccent en de letters DR in het veilige middengebied.</desc>
+  <rect width="512" height="512" fill="#111317" />
+  <circle cx="256" cy="256" r="214" fill="#20252d" stroke="#7a8491" stroke-width="12" />
+  <path d="M88 318h336" stroke="#f0c766" stroke-width="20" stroke-linecap="round" />
+  <path d="M128 278h256" stroke="#d5dae0" stroke-width="8" stroke-linecap="round" />
+  <path d="M176 252v94M256 238v122M336 252v94" stroke="#d5dae0" stroke-width="8" stroke-linecap="round" />
+  <text x="256" y="222" fill="#f4f7fb" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="800" letter-spacing="0" text-anchor="middle">DR</text>
+</svg>

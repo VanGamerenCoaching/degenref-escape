@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+coverage/
+
+# Local caches and temporary files
+tmp/
+.vite/
+.vitest/
+.cache/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local package manager files
+.npm/
+
+# Content source policy:
+# content-source/ is intentionally not ignored. Commit those files only when
+# the owner has explicitly decided the source package may be published.
