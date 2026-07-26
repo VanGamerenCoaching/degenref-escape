@@ -15,6 +15,12 @@ import { getAllowedHints, getHintPenalty } from '../storage/gameRules';
 import type { AnswerValue } from '../storage/gameState';
 import { useGameState } from '../storage/useGameState';
 
+const modeLabels = {
+  learning: 'Leren',
+  practice: 'Oefenen',
+  exam: 'Examen',
+} as const;
+
 export function PlayPage() {
   const { missionId } = useParams();
   const content = useContent();
@@ -188,6 +194,23 @@ export function PlayPage() {
         </div>
       </section>
 
+      <section className="session-console" aria-label="Sessiestatus">
+        <div>
+          <span className="session-console__label">Controlepost</span>
+          <strong>
+            Vraag {progressValue} van {session.questionOrder.length}
+          </strong>
+        </div>
+        <div>
+          <span className="session-console__label">Modus</span>
+          <strong>{modeLabels[session.mode]}</strong>
+        </div>
+        <div>
+          <span className="session-console__label">Opslag</span>
+          <strong>Lokaal hervatbaar</strong>
+        </div>
+      </section>
+
       <ProgressBar
         label="Missievoortgang"
         max={session.questionOrder.length}
@@ -205,7 +228,7 @@ export function PlayPage() {
         <StatusMessage variant="success">{savedMessage}</StatusMessage>
       ) : null}
 
-      <Panel>
+      <Panel className="question-panel">
         <div className="question-meta">
           <Badge variant="ghost">{currentQuestion.category}</Badge>
           <Badge variant="ghost">Niveau {currentQuestion.difficulty}</Badge>
@@ -220,7 +243,7 @@ export function PlayPage() {
         />
       </Panel>
 
-      <Panel labelledBy="hints-title">
+      <Panel className="hint-panel" labelledBy="hints-title">
         <h2 id="hints-title">Hints</h2>
         {session.mode === 'exam' ? (
           <p>Hints zijn uitgeschakeld in examenmodus.</p>

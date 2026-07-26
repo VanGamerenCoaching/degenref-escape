@@ -76,6 +76,20 @@ export function StartPage() {
           Kies spelmodus, regelseizoen en ervaringsniveau. Je kunt deze keuze later in
           instellingen aanpassen.
         </p>
+        <ol className="onboarding-steps" aria-label="Onboardingstappen">
+          <li>
+            <span>1</span>
+            Modus
+          </li>
+          <li>
+            <span>2</span>
+            Seizoen
+          </li>
+          <li>
+            <span>3</span>
+            Niveau
+          </li>
+        </ol>
       </section>
 
       <Panel>
@@ -93,6 +107,7 @@ export function StartPage() {
         }}
       >
         <Panel>
+          <p className="eyebrow">Stap 1</p>
           <fieldset>
             <legend>Spelmodus</legend>
             <div className="choice-grid">
@@ -115,8 +130,12 @@ export function StartPage() {
         </Panel>
 
         <Panel>
+          <div className="form-section-header">
+            <p className="eyebrow">Stap 2</p>
+            <h2>Regelseizoen</h2>
+          </div>
           <label className="field">
-            <span>Regelseizoen</span>
+            <span>Actief seizoen</span>
             <select value={season} onChange={(event) => setSeason(event.target.value)}>
               {content.seasonValues.map((seasonValue) => (
                 <option key={seasonValue} value={seasonValue}>
@@ -132,6 +151,7 @@ export function StartPage() {
         </Panel>
 
         <Panel>
+          <p className="eyebrow">Stap 3</p>
           <fieldset>
             <legend>Ervaringsniveau</legend>
             <div className="choice-grid">
@@ -153,7 +173,10 @@ export function StartPage() {
           </fieldset>
         </Panel>
 
-        <AppButton type="submit">Naar missieoverzicht</AppButton>
+        <div className="form-submit-bar">
+          <span>Je training wordt alleen lokaal opgeslagen.</span>
+          <AppButton type="submit">Naar missieoverzicht</AppButton>
+        </div>
       </form>
     </div>
   );

@@ -80,7 +80,7 @@ export function MissionDetailPage() {
       ) : null}
 
       <div className="detail-grid">
-        <Panel>
+        <Panel className="mission-brief">
           <h2>Missiedoel</h2>
           <p>{mission.passCondition}</p>
           <h3>Beloning</h3>
@@ -117,6 +117,10 @@ export function MissionDetailPage() {
 
         <Panel>
           <h2>Voortgang</h2>
+          <div className="mission-readiness" aria-label="Missiestatus">
+            <span>{playableQuestions.length} opdrachten klaar</span>
+            <span>Seizoen {state.settings.selectedSeason}</span>
+          </div>
           <dl className="metric-list">
             <div>
               <dt>Pogingen</dt>

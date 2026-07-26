@@ -10,7 +10,7 @@ export function ContentErrorScreen({
 }) {
   return (
     <main className="app-main app-main--standalone">
-      <Panel>
+      <Panel className="system-state system-state--error">
         <h1>Content kan niet worden geladen</h1>
         <StatusMessage title="Controleer de JSON-content" variant="danger">
           De gegenereerde content voldoet niet aan de lokale validatie.

@@ -3,7 +3,7 @@ import { LoadingState, Panel } from '../components/ui';
 export function ContentLoadingScreen() {
   return (
     <main className="app-main app-main--standalone">
-      <Panel>
+      <Panel className="system-state">
         <h1>Content laden</h1>
         <p>
           De missies, vragen en regelkaarten worden lokaal voorbereid. Er worden geen

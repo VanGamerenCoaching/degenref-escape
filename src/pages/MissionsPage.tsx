@@ -86,46 +86,57 @@ export function MissionsPage() {
         </p>
       </section>
 
-      <div className="filters" aria-label="Missiefilters">
-        <label>
-          Status
-          <select
-            value={statusFilter}
-            onChange={(event) =>
-              setStatusFilter(event.target.value as typeof statusFilter)
-            }
-          >
-            {Object.entries(statusLabels).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Moeilijkheid
-          <select
-            value={difficultyFilter}
-            onChange={(event) => setDifficultyFilter(event.target.value)}
-          >
-            <option value="all">Alle niveaus</option>
-            <option value="1">Beginner</option>
-            <option value="2">Gevorderd</option>
-            <option value="3">Examentraining</option>
-          </select>
-        </label>
-        <label>
-          Hoofdcategorie
-          <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}>
-            <option value="all">Alle categorieën</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+      <section className="mission-toolbar" aria-labelledby="mission-filters-title">
+        <div>
+          <h2 id="mission-filters-title">Missies filteren</h2>
+          <p className="result-count">
+            {visibleMissions.length} van {missionCards.length} missies zichtbaar
+          </p>
+        </div>
+        <div className="filters" aria-label="Missiefilters">
+          <label>
+            Status
+            <select
+              value={statusFilter}
+              onChange={(event) =>
+                setStatusFilter(event.target.value as typeof statusFilter)
+              }
+            >
+              {Object.entries(statusLabels).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Moeilijkheid
+            <select
+              value={difficultyFilter}
+              onChange={(event) => setDifficultyFilter(event.target.value)}
+            >
+              <option value="all">Alle niveaus</option>
+              <option value="1">Beginner</option>
+              <option value="2">Gevorderd</option>
+              <option value="3">Examentraining</option>
+            </select>
+          </label>
+          <label>
+            Hoofdcategorie
+            <select
+              value={categoryFilter}
+              onChange={(event) => setCategoryFilter(event.target.value)}
+            >
+              <option value="all">Alle categorieën</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </section>
 
       {visibleMissions.length === 0 ? (
         <EmptyState title="Geen missies gevonden">
@@ -134,7 +145,11 @@ export function MissionsPage() {
       ) : (
         <div className="mission-grid">
           {visibleMissions.map((card) => (
-            <Card className="mission-card" key={card.mission.id}>
+            <Card
+              className={`mission-card mission-card--${card.status}`}
+              key={card.mission.id}
+            >
+              <div className="mission-card__rail" aria-hidden="true" />
               <div className="mission-card__header">
                 <h2>{card.mission.title}</h2>
                 <Badge variant={card.status === 'locked' ? 'warning' : 'secondary'}>
@@ -185,9 +200,11 @@ export function MissionsPage() {
                   Rond de vorige missie af om deze missie te openen.
                 </p>
               ) : (
-                <Link className="button button--primary" to={`/mission/${card.mission.id}`}>
-                  Missie openen
-                </Link>
+                <div className="mission-card__action">
+                  <Link className="button button--primary" to={`/mission/${card.mission.id}`}>
+                    Missie openen
+                  </Link>
+                </div>
               )}
             </Card>
           ))}

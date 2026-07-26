@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { QuestionContent } from '../../content/types';
-import { AppButton, Panel, ReviewStatusBadge, RuleReference } from '../../components/ui';
+import {
+  AppButton,
+  Badge,
+  Panel,
+  ReviewStatusBadge,
+  RuleReference,
+} from '../../components/ui';
 import type { AnswerRecord, AnswerValue, GameSession } from '../../storage/gameState';
 import { shuffleWithSeed } from '../../utils/random';
 
@@ -29,7 +35,7 @@ export function QuestionInteraction({
     default: {
       const fallbackQuestion = question as unknown as { id?: string };
       return (
-        <Panel>
+        <Panel className="unsupported-question">
           <h2>Vraagtype nog niet ondersteund</h2>
           <p>Deze vraag kan nog niet worden weergegeven.</p>
           {import.meta.env.DEV && fallbackQuestion.id !== undefined ? (
@@ -58,13 +64,20 @@ export function FeedbackPanel({
     <section
       aria-labelledby={`feedback-title-${question.id}`}
       aria-live="polite"
-      className="panel feedback-panel"
+      className={`panel feedback-panel ${
+        answer.isCorrect ? 'feedback-panel--correct' : 'feedback-panel--incorrect'
+      }`}
       ref={feedbackRef}
       tabIndex={-1}
     >
-      <h2 id={`feedback-title-${question.id}`}>
-        {answer.isCorrect ? 'Goed beoordeeld' : 'Nog niet goed'}
-      </h2>
+      <div className="feedback-panel__header">
+        <h2 id={`feedback-title-${question.id}`}>
+          {answer.isCorrect ? 'Goed beoordeeld' : 'Nog niet goed'}
+        </h2>
+        <Badge variant={answer.isCorrect ? 'success' : 'warning'}>
+          {answer.isCorrect ? 'Correct' : 'Controleer opnieuw'}
+        </Badge>
+      </div>
       <dl className="feedback-list">
         <div>
           <dt>Jouw antwoord</dt>
@@ -168,7 +181,7 @@ function MultipleChoiceQuestion({
       }}
     >
       <fieldset>
-        <legend>{question.question}</legend>
+        <legend className="question-prompt">{question.question}</legend>
         {isMultiple ? (
           <p className="form-hint">Kies maximaal {maxSelections} antwoorden.</p>
         ) : null}
@@ -178,7 +191,11 @@ function MultipleChoiceQuestion({
             const inputId = `${question.id}-${option.id}`;
 
             return (
-              <label className="answer-option" htmlFor={inputId} key={option.id}>
+              <label
+                className={`answer-option ${checked ? 'answer-option--selected' : ''}`}
+                htmlFor={inputId}
+                key={option.id}
+              >
                 <input
                   checked={checked}
                   id={inputId}
@@ -249,13 +266,16 @@ function SequenceQuestion({
       }}
     >
       <fieldset>
-        <legend>{question.question}</legend>
+        <legend className="question-prompt">{question.question}</legend>
         <p className="sr-only" aria-live="polite">
           {announcement}
         </p>
         <ol className="sequence-list">
           {order.map((item, index) => (
             <li key={item.id}>
+              <span className="sequence-position" aria-hidden="true">
+                {index + 1}
+              </span>
               <span>{item.text}</span>
               <div className="sequence-controls">
                 <AppButton

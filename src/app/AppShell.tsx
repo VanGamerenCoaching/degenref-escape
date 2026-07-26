@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import { APP_NAME } from './appInfo';
 import { PwaUpdateNotice } from './PwaUpdateNotice';
-import { IconButton, LoadingState } from '../components/ui';
+import { LoadingState } from '../components/ui';
 import { useGameState } from '../storage/useGameState';
 
 const AboutPage = lazy(() =>
@@ -110,14 +110,17 @@ export function AppShell() {
             <NavLink to="/missions">Missies</NavLink>
             <NavLink to="/rules">Regels</NavLink>
           </nav>
-          <IconButton
-            label="Instellingen openen"
+          <button
+            aria-label="Instellingen openen"
+            className="button button--ghost app-header__settings"
             onClick={() => {
               void navigate('/settings');
             }}
+            type="button"
           >
-            ⚙
-          </IconButton>
+            <span aria-hidden="true">⚙</span>
+            <span>Instellingen</span>
+          </button>
         </div>
       </header>
       <main className="app-main" id="main-content" tabIndex={-1}>

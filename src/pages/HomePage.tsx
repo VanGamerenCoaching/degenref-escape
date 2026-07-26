@@ -16,6 +16,11 @@ export function HomePage() {
         <p className="eyebrow">Niet-officiële leervertaling</p>
         <h1>DegenRef Escape</h1>
         <p className="hero__subtitle">Train je beslissingen als degenscheidsrechter</p>
+        <div className="hero__status-strip" aria-label="App-overzicht">
+          <span>Piste vrij</span>
+          <span>{content.missions.length} missies</span>
+          <span>{content.questions.length} vragen</span>
+        </div>
         <div className="hero__actions">
           <Link className="button button--primary" to="/start">
             Nieuwe training
@@ -39,7 +44,7 @@ export function HomePage() {
       </section>
 
       <Panel>
-        <h2>Rustig oefenen, lokaal opgeslagen</h2>
+        <h2>Lokale trainingsruimte</h2>
         <p>
           Alle voortgang blijft op dit apparaat in deze browser. Er zijn geen accounts,
           backend, analytics of trackingcookies.

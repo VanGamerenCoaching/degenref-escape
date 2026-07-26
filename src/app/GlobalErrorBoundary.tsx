@@ -27,7 +27,7 @@ export class GlobalErrorBoundary extends Component<
     if (this.state.error !== null) {
       return (
         <main className="app-main app-main--standalone">
-          <Panel>
+          <Panel className="system-state system-state--error">
             <StatusMessage title="Er ging iets mis" variant="danger">
               De app is gestopt door een onverwachte fout. Herlaad de pagina om opnieuw
               te beginnen.

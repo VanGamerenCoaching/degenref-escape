@@ -93,6 +93,17 @@ export function ResultsPage() {
       </section>
 
       <div className="result-hero">
+        <div className="result-hero__summary">
+          <span className="eyebrow">Eindstatus</span>
+          <strong>
+            {summary.missionCompleted ? 'Missie voltooid' : 'Missie nog open'}
+          </strong>
+          <p>
+            {summary.accuracy >= 80
+              ? 'Sterke ronde. Gebruik de details om scherp te blijven.'
+              : 'Gebruik het advies hieronder om gericht opnieuw te oefenen.'}
+          </p>
+        </div>
         <ScoreDisplay label="Totale score" points={summary.scorePoints} />
         <div className="result-hero__stat">
           <span>Correct</span>
@@ -196,7 +207,7 @@ export function ResultsPage() {
 
       <Panel>
         <h2>Verder oefenen</h2>
-        <div className="button-row button-row--wrap">
+        <div className="button-row button-row--wrap result-actions">
           <AppButton onClick={() => startQuestionSet([], true)}>
             Missie opnieuw spelen
           </AppButton>
