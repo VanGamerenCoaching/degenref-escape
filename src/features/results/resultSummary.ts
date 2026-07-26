@@ -180,7 +180,7 @@ export function buildPracticeAdvice({
     advice.push({
       id: 'many-hints',
       tone: 'focus',
-      text: 'Je gebruikte relatief veel hints. Speel deze missie nog eens zonder hints om besluitvorming te automatiseren.',
+      text: 'Je gebruikte relatief veel hints. Speel deze fase nog eens zonder hints om besluitvorming te automatiseren.',
     });
   }
 

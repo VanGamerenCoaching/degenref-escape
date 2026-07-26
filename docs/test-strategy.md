@@ -3,9 +3,9 @@
 De automatische tests controleren gedrag waar dat betrouwbaar kan:
 
 - Contentvalidatie en waarschuwingen.
-- Missie- en seizoensfiltering, inclusief t.124-selectie.
+- Fase- en seizoensfiltering, inclusief t.124-selectie.
 - localStorage, migratie en herstel bij beschadigde opslag.
-- Score, levens, hints, categorieen en ontgrendeling.
+- Score, levens, hints, categorieen en open-fasestatus.
 - Meerkeuze- en volgordevragen.
 - Resultatenscherm en deterministisch oefenadvies.
 - Regelbibliotheek zoeken en filteren.

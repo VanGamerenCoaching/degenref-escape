@@ -7,7 +7,7 @@
       "content-source/degenref_missions.json",
       "content-source/degenref_coverage.csv"
     ],
-    "relationStrategy": "mission-room-article-match"
+    "relationStrategy": "tournament-phase-article-map"
   },
   "metadata": {
     "title": "DegenRef Escape - Nederlands contentpakket",
@@ -36,38 +36,38 @@
   "rooms": [
     {
       "id": "room-1-basis",
-      "title": "De ontvangsthal",
-      "subtitle": "Basisbegrippen, piste en etiquette",
+      "title": "Basis en wedstrijdprotocol",
+      "subtitle": "Begroeting, houding, oproep en algemene wedstrijdcontext",
       "articles": "t.1-t.20, t.107-t.123"
     },
     {
       "id": "room-2-piste",
-      "title": "De piste",
-      "subtitle": "Stelling, commando's en grenzen",
+      "title": "Piste en grenzen",
+      "subtitle": "Stelling, commando's, verplaatsing en pistegrenzen",
       "articles": "t.21-t.36"
     },
     {
       "id": "room-3-tijd",
-      "title": "De tijdkamer",
-      "subtitle": "Wedstrijdvormen, tijd en medische situaties",
+      "title": "Tijd en wedstrijdvorm",
+      "subtitle": "Poule, directe eliminatie, teamverloop en onderbrekingen",
       "articles": "t.37-t.45, t.124"
     },
     {
       "id": "room-4-materiaal",
-      "title": "De materiaalcontrole",
-      "subtitle": "Arbitrage, registratie en uitrusting",
+      "title": "Materiaal en wedstrijdtafel",
+      "subtitle": "Controle, registratie, video en administratieve procedure",
       "articles": "t.46-t.75"
     },
     {
       "id": "room-5-degen",
-      "title": "De degenfinale",
-      "subtitle": "Trefvlak, dubbele treffers en annuleringen",
+      "title": "Degenacties",
+      "subtitle": "Trefvlak, lampmeldingen, dubbele treffers en annuleringen",
       "articles": "t.90-t.95"
     },
     {
       "id": "room-6-straffen",
-      "title": "De protestkamer",
-      "subtitle": "Kaarten, discipline en beroepsprocedure",
+      "title": "Sancties en protest",
+      "subtitle": "Kaarten, discipline, beroep en afronding",
       "articles": "t.127-t.178"
     }
   ],
@@ -1913,356 +1913,396 @@
     {
       "id": "mission-01-salute-start",
       "roomId": "room-1-basis",
-      "title": "De vergrendelde ontvangsthal",
-      "story": "De wedstrijd kan pas beginnen wanneer je de officiële begroeting en startprocedure correct uitvoert.",
+      "title": "Aanmelding en wedstrijdprotocol",
+      "story": "Je begint de toernooidag bij de oproep, begroeting en eerste instructies aan de piste.",
       "articles": [
         "t.1",
-        "t.22",
-        "t.23",
-        "t.122"
+        "t.7",
+        "t.8",
+        "t.9",
+        "t.10",
+        "t.11",
+        "t.12",
+        "t.13",
+        "t.14",
+        "t.15"
       ],
       "tasks": [
         {
-          "type": "sequence",
-          "instruction": "Zet de schermgroet in de juiste volgorde."
+          "type": "question",
+          "instruction": "Controleer begroeting en wedstrijdhouding."
         },
         {
-          "type": "sequence",
-          "instruction": "Zet En garde, Prêts? en Allez in de juiste volgorde."
+          "type": "question",
+          "instruction": "Beoordeel aanwezigheid, weigering en sportief gedrag."
         },
         {
-          "type": "decision",
-          "instruction": "Bepaal welke bewegingen vóór Allez en na Halte geldig kunnen zijn."
+          "type": "question",
+          "instruction": "Kies de juiste eerste procedure aan de piste."
         }
       ],
-      "passCondition": "Alle drie onderdelen correct; maximaal één hint gebruikt.",
-      "reward": "Sleutel van de ontvangsthal",
+      "passCondition": "Rond de fase af met duidelijke beslissingen op protocolvragen.",
+      "reward": "Startkaart voor de pouleronde",
       "reviewed": false
     },
     {
       "id": "mission-02-build-piste",
       "roomId": "room-1-basis",
-      "title": "Bouw de piste",
-      "story": "De lijnen zijn verdwenen. Herstel de piste vóór de deelnemers arriveren.",
+      "title": "Pistecontrole voor de eerste ronde",
+      "story": "Voor de poules starten controleer je de piste, lijnen en wedstrijdzone.",
       "articles": [
         "t.16",
         "t.17",
         "t.18",
-        "t.19"
+        "t.19",
+        "t.20"
       ],
       "tasks": [
         {
-          "type": "drag-drop",
-          "instruction": "Plaats middenlijn, stellijnen en achterlijnen."
+          "type": "question",
+          "instruction": "Herken middenlijn, stellijnen en achterlijnen."
         },
         {
-          "type": "numeric",
-          "instruction": "Vul lengte, breedte en afstanden in."
+          "type": "question",
+          "instruction": "Controleer afmetingen en veiligheidszones."
         },
         {
-          "type": "hotspot",
-          "instruction": "Markeer de laatste twee meter vóór beide achterlijnen."
+          "type": "question",
+          "instruction": "Beoordeel situaties rond de laatste meters van de piste."
         }
       ],
-      "passCondition": "Alle afmetingen en lijnen correct.",
+      "passCondition": "Rond de pistecontrole af zonder openstaande basisfouten.",
       "reward": "Pistekaart",
       "reviewed": false
     },
     {
       "id": "mission-03-ready-check",
       "roomId": "room-2-piste",
-      "title": "Klaar voor Allez",
-      "story": "Eén schermer staat verkeerd, het materiaal ligt verspreid en de klok loopt al.",
+      "title": "Oproep, opstelling en Allez",
+      "story": "De poule staat klaar; jij brengt schermers correct op afstand en start het gevecht.",
       "articles": [
         "t.21",
         "t.22",
+        "t.23",
+        "t.24",
+        "t.25",
+        "t.26",
+        "t.27",
         "t.114",
         "t.115",
-        "t.117"
+        "t.116",
+        "t.117",
+        "t.118",
+        "t.119",
+        "t.120",
+        "t.121",
+        "t.122",
+        "t.123"
       ],
       "tasks": [
         {
-          "type": "inspection",
-          "instruction": "Zoek vijf fouten in houding, kleding en materiaal."
+          "type": "question",
+          "instruction": "Plaats schermers correct en start met de juiste commando’s."
         },
         {
-          "type": "decision",
-          "instruction": "Plaats de eerst afgeroepen schermer aan de juiste kant."
+          "type": "question",
+          "instruction": "Herken fouten rond oproep, houding en gereedheid."
         },
         {
-          "type": "sequence",
-          "instruction": "Voer de correcte startprocedure uit."
+          "type": "question",
+          "instruction": "Beoordeel procedurefouten voordat het gevecht echt loopt."
         }
       ],
-      "passCondition": "Minstens vier van vijf fouten gevonden en startprocedure foutloos.",
-      "reward": "Startcode",
+      "passCondition": "Start de partij en handel vroege proceduremomenten correct af.",
+      "reward": "Startprocedure afgerond",
       "reviewed": false
     },
     {
       "id": "mission-04-boundary-lab",
       "roomId": "room-2-piste",
-      "title": "Ontsnappen langs de zijlijn",
-      "story": "Een flèche eindigt buiten de piste en beide lampen branden.",
+      "title": "Acties aan de zijlijn",
+      "story": "Tijdens actieve touches beoordeel je passeren, grenzen, corps-a-corps en herplaatsen.",
       "articles": [
         "t.28",
+        "t.29",
+        "t.30",
+        "t.31",
+        "t.32",
         "t.33",
         "t.34",
         "t.35",
-        "t.36"
+        "t.36",
+        "t.37"
       ],
       "tasks": [
         {
-          "type": "timeline",
-          "instruction": "Bepaal wanneer de grens volledig is overschreden."
+          "type": "question",
+          "instruction": "Bepaal wanneer een grens volledig is overschreden."
         },
         {
-          "type": "decision",
-          "instruction": "Bepaal welke treffer bij degen nog geldig kan zijn."
+          "type": "question",
+          "instruction": "Beoordeel passeren, corps-a-corps en verlaten van de piste."
         },
         {
-          "type": "placement",
-          "instruction": "Plaats de schermers na de onderbreking correct terug."
+          "type": "question",
+          "instruction": "Kies de juiste herplaatsing na een onderbreking."
         }
       ],
-      "passCondition": "Trefferbeslissing en terugplaatsing beide correct.",
-      "reward": "Grensbadge",
+      "passCondition": "Beoordeel de pisteactie en hervat het gevecht op de juiste plaats.",
+      "reward": "Grenssituatie opgelost",
       "reviewed": false
     },
     {
       "id": "mission-05-pool-lock",
       "roomId": "room-3-tijd",
-      "title": "De 4-4-vergrendeling",
-      "story": "Het scoreapparaat staat op 4-4 en registreert telkens dubbele treffers.",
+      "title": "Poulefase en scoreverloop",
+      "story": "Je leidt korte poulegevechten en bewaakt score, tijdsverloop en gelijke standen.",
       "articles": [
         "t.38",
-        "t.44",
-        "t.92"
+        "t.41",
+        "t.42",
+        "t.44"
       ],
       "tasks": [
         {
-          "type": "decision",
-          "instruction": "Behandel een dubbele treffer op 4-4."
+          "type": "question",
+          "instruction": "Beoordeel de opbouw van een poulegevecht."
         },
         {
-          "type": "clock",
-          "instruction": "Laat de resterende tijd correct doorlopen."
+          "type": "question",
+          "instruction": "Volg score en resterende tijd zonder exacte tijdsbelofte."
         },
         {
-          "type": "scenario",
-          "instruction": "Los een gelijke stand na drie minuten op met prioriteit."
+          "type": "question",
+          "instruction": "Los een gelijke stand procedureel op."
         }
       ],
-      "passCondition": "Geen dubbele treffer op 4-4 toegekend en prioriteitsprocedure correct.",
-      "reward": "Beslissende-treffer-token",
+      "passCondition": "Rond de poulefase af met correcte score- en tijdkeuzes.",
+      "reward": "Poulekaart verwerkt",
       "reviewed": false
     },
     {
       "id": "mission-06-de-clock",
       "roomId": "room-3-tijd",
-      "title": "Negen minuten onder druk",
-      "story": "De klok valt uit in de derde periode van een directe-eliminatiewedstrijd.",
+      "title": "Directe eliminatie onder tijdsdruk",
+      "story": "In een directe-eliminatiepartij bewaak je periodes, beslissende momenten en non-combativity.",
       "articles": [
         "t.39",
         "t.40",
         "t.43",
-        "t.44"
+        "t.124"
       ],
       "tasks": [
         {
-          "type": "clock",
-          "instruction": "Herstel de resterende tijd op basis van de bekende gegevens."
+          "type": "question",
+          "instruction": "Herken de opbouw van directe eliminatie en teammomenten."
         },
         {
-          "type": "decision",
-          "instruction": "Beoordeel een actie die na het externe eindsignaal aankomt."
+          "type": "question",
+          "instruction": "Beoordeel tijd, eindsignaal en beslissende minuut."
         },
         {
-          "type": "scenario",
-          "instruction": "Los een gelijke eindstand op."
+          "type": "question",
+          "instruction": "Pas de seizoensgebonden t.124-vragen gescheiden toe."
         }
       ],
-      "passCondition": "Tijd en beslissende minuut correct toegepast.",
-      "reward": "Chronometercode",
+      "passCondition": "Houd de partij onder tijdsdruk procedureel zuiver.",
+      "reward": "Chronometercontrole afgerond",
       "reviewed": false
     },
     {
       "id": "mission-07-medical-room",
       "roomId": "room-3-tijd",
-      "title": "De medische kamer",
-      "story": "Een schermer vraagt een pauze na een blessure en later opnieuw voor dezelfde klacht.",
+      "title": "Blessure en onderbreking",
+      "story": "Een partij wordt onderbroken door blessure, herstelcontrole of een onverwachte pauze.",
       "articles": [
-        "t.45"
+        "t.45",
+        "t.46",
+        "t.47",
+        "t.48",
+        "t.49",
+        "t.50",
+        "t.51",
+        "t.52",
+        "t.53",
+        "t.54",
+        "t.55"
       ],
       "tasks": [
         {
-          "type": "timer",
-          "instruction": "Stel de maximale behandeltijd in."
+          "type": "question",
+          "instruction": "Bepaal wie behandeltijd en geschiktheid vaststelt."
         },
         {
-          "type": "role-match",
-          "instruction": "Wijs aan wie de behandeltijd en geschiktheid bepaalt."
+          "type": "question",
+          "instruction": "Beoordeel herhaalde of aanvullende onderbrekingen."
         },
         {
-          "type": "decision",
-          "instruction": "Beoordeel een tweede verzoek voor dezelfde blessure."
+          "type": "question",
+          "instruction": "Hervat de partij met de juiste procedure."
         }
       ],
-      "passCondition": "Alle medische bevoegdheden en termijnen correct.",
-      "reward": "Medisch protocol",
+      "passCondition": "Handel onderbrekingen af zonder de partijcontext te verliezen.",
+      "reward": "Onderbrekingsrapport",
       "reviewed": false
     },
     {
       "id": "mission-08-equipment-vault",
       "roomId": "room-4-materiaal",
-      "title": "De materiaal-kluis",
-      "story": "Vier degens moeten worden gecontroleerd, maar slechts één is wedstrijdklaar.",
+      "title": "Materiaalcontrole aan de piste",
+      "story": "Voor en tijdens de partij beoordeel je kleding, wapens en controleprocedures.",
       "articles": [
         "t.64",
+        "t.65",
+        "t.66",
+        "t.67",
         "t.68",
         "t.69",
         "t.70",
         "t.71",
         "t.72",
-        "t.73"
+        "t.73",
+        "t.74",
+        "t.75"
       ],
       "tasks": [
         {
-          "type": "inspection",
+          "type": "question",
           "instruction": "Controleer keurmerken, isolatie, veerdruk en reservemateriaal."
         },
         {
-          "type": "gauge",
-          "instruction": "Gebruik de maten van 1,5 mm en 0,5 mm correct."
+          "type": "question",
+          "instruction": "Onderscheid wedstrijdschade, niet-reglementair materiaal en fraude."
         },
         {
-          "type": "classification",
-          "instruction": "Onderscheid wedstrijdschade, niet-reglementair materiaal en fraude."
+          "type": "question",
+          "instruction": "Kies de juiste vervolgstap bij materiaalproblemen."
         }
       ],
-      "passCondition": "De juiste degen geselecteerd en alle fouten correct geclassificeerd.",
-      "reward": "Materiaalzegel",
+      "passCondition": "Rond de materiaalcontrole af met correcte classificaties.",
+      "reward": "Materiaalcontrole afgerond",
       "reviewed": false
     },
     {
       "id": "mission-09-video-desk",
       "roomId": "room-4-materiaal",
-      "title": "De videokamer",
-      "story": "Een schermer vraagt video, maar heeft mogelijk geen verzoek meer over.",
+      "title": "Video en wedstrijdadministratie",
+      "story": "Aan de wedstrijdtafel beoordeel je videoverzoeken, notatie en administratieve stappen.",
       "articles": [
         "t.60",
         "t.61",
-        "t.62"
+        "t.62",
+        "t.63"
       ],
       "tasks": [
         {
-          "type": "counter",
-          "instruction": "Bereken hoeveel verzoeken beschikbaar en behouden zijn."
+          "type": "question",
+          "instruction": "Bereken hoeveel videoverzoeken beschikbaar en behouden zijn."
         },
         {
-          "type": "video",
-          "instruction": "Kies maximaal vier herhalingen en passende snelheid."
+          "type": "question",
+          "instruction": "Beoordeel herhaling, snelheid en definitieve beslissing."
         },
         {
-          "type": "decision",
-          "instruction": "Bepaal wanneer de beslissing definitief is."
+          "type": "question",
+          "instruction": "Verwerk administratieve keuzes rond de wedstrijdtafel."
         }
       ],
-      "passCondition": "Verzoekrecht en definitieve beslissing correct.",
-      "reward": "Videopas",
+      "passCondition": "Maak video- en administratiekeuzes die passen bij de broncontent.",
+      "reward": "Wedstrijdtafel bijgewerkt",
       "reviewed": false
     },
     {
       "id": "mission-10-double-hit-lab",
       "roomId": "room-5-degen",
-      "title": "Het dubbele-trefferlaboratorium",
-      "story": "Het apparaat toont twee lampen, maar één registratie is mogelijk ongeldig.",
+      "title": "Degenacties en treffers",
+      "story": "Je beoordeelt trefvlak, dubbele treffers en geldigheid van registraties.",
       "articles": [
         "t.90",
         "t.91",
         "t.92",
-        "t.93",
-        "t.94"
+        "t.93"
       ],
       "tasks": [
         {
-          "type": "validity",
+          "type": "question",
           "instruction": "Controleer trefvlak en wijze van treffen."
         },
         {
-          "type": "fault-test",
-          "instruction": "Test kom, piste, punt en registratie."
+          "type": "question",
+          "instruction": "Interpreteer enkele en dubbele lampmeldingen."
         },
         {
-          "type": "choice",
-          "instruction": "Pas de keuze toe bij één vaststaande en één twijfelachtige treffer."
+          "type": "question",
+          "instruction": "Gebruik de inhoudelijke oplossing uit de vraagdata."
         }
       ],
-      "passCondition": "Alleen de volgens t.92-t.94 juiste score toegekend.",
-      "reward": "Dubbele-lampcode",
+      "passCondition": "Ken alleen treffers toe die volgens de vraagdata juist zijn.",
+      "reward": "Trefferbeeld beoordeeld",
       "reviewed": false
     },
     {
       "id": "mission-11-bodywire-fault",
       "roomId": "room-5-degen",
-      "title": "De losgeraakte stekker",
-      "story": "Na een treffer blijkt de lichaamsdraad los te zitten.",
+      "title": "Storing na de treffer",
+      "story": "Na een lampmelding onderzoek je materiaalstoring, draadproblemen en annulering.",
       "articles": [
         "t.56",
+        "t.57",
+        "t.58",
+        "t.59",
         "t.94",
         "t.95"
       ],
       "tasks": [
         {
-          "type": "inspection",
-          "instruction": "Bepaal waar de stekker is losgeraakt."
+          "type": "question",
+          "instruction": "Bepaal waar een storing of loskoppeling relevant is."
         },
         {
-          "type": "safety-check",
-          "instruction": "Controleer het veiligheidssysteem."
+          "type": "question",
+          "instruction": "Controleer het veiligheidssysteem en de registratie."
         },
         {
-          "type": "decision",
-          "instruction": "Bepaal of annulering is toegestaan."
+          "type": "question",
+          "instruction": "Beoordeel of annulering volgens de vraagdata aan de orde is."
         }
       ],
-      "passCondition": "Verschil tussen normale loskoppeling en falend veiligheidssysteem correct toegepast.",
-      "reward": "Storingsrapport",
+      "passCondition": "Maak onderscheid tussen geldige registratie en storing.",
+      "reward": "Storingsmoment afgerond",
       "reviewed": false
     },
     {
       "id": "mission-12-card-maze",
       "roomId": "room-6-straffen",
-      "title": "Het kaartenlabyrint",
-      "story": "In één gevecht volgen meerdere overtredingen en daarna een protest.",
+      "title": "Kaarten, protest en afronding",
+      "story": "Aan het eind van de toernooidag handel je sancties, beroep en afsluiting zorgvuldig af.",
       "articles": [
-        "t.158",
-        "t.161",
-        "t.162",
-        "t.165",
-        "t.166",
-        "t.167",
-        "t.169",
-        "t.170",
-        "t.172",
-        "t.173",
-        "t.174"
+        "t.107",
+        "t.108",
+        "t.109",
+        "t.110",
+        "t.111",
+        "t.112",
+        "t.113",
+        "t.125-t.178"
       ],
       "tasks": [
         {
-          "type": "classification",
-          "instruction": "Plaats overtredingen in groep 1 tot en met 4."
+          "type": "question",
+          "instruction": "Plaats overtredingen in de juiste categorie of procedure."
         },
         {
-          "type": "sequence",
-          "instruction": "Pas kaarten cumulatief en in de juiste volgorde toe."
+          "type": "question",
+          "instruction": "Beoordeel kaarten en sancties op basis van de content."
         },
         {
-          "type": "protest",
-          "instruction": "Onderscheid een feitelijke beslissing van een verkeerde regeltoepassing."
+          "type": "question",
+          "instruction": "Onderscheid protest, beroep en afronding van de wedstrijd."
         }
       ],
-      "passCondition": "Minstens 80% juiste kaartbeslissingen en een correct protestmoment.",
-      "reward": "Scheidsrechtersbadge",
+      "passCondition": "Rond sanctie- en protestmomenten af zonder officiële goedkeuringsclaim.",
+      "reward": "Toernooidag afgerond",
       "reviewed": false
     }
   ],
@@ -7387,76 +7427,21 @@
         "q-t10-01",
         "q-t12-01",
         "q-t15-01",
-        "q-t16-01",
-        "q-t18-01",
-        "q-t18-02",
-        "q-t19-01",
-        "q-t19-02",
-        "q-t20-01",
-        "q-t22-01",
-        "q-t22-02",
-        "q-t22-03",
-        "q-t22-04",
-        "q-t23-01",
-        "q-t23-02",
-        "q-t23-03",
-        "q-t107-01",
-        "q-t108-01",
-        "q-t109-01",
-        "q-t109-02",
-        "q-t112-01",
-        "q-t114-01",
-        "q-t115-01",
-        "q-t115-02",
-        "q-t116-01",
-        "q-t117-01",
-        "q-t120-01",
-        "q-t122-01",
-        "q-t122-02",
-        "q-t125-01",
-        "q-t125-02",
-        "q-t127-01",
         "q-t7-01",
         "q-t11-01",
         "q-t13-01",
-        "q-t14-01",
-        "q-t17-01"
+        "q-t14-01"
       ]
     },
     {
       "missionId": "mission-02-build-piste",
       "questionIds": [
-        "q-t1-01",
-        "q-t8-01",
-        "q-t9-01",
-        "q-t10-01",
-        "q-t12-01",
-        "q-t15-01",
         "q-t16-01",
         "q-t18-01",
         "q-t18-02",
         "q-t19-01",
         "q-t19-02",
         "q-t20-01",
-        "q-t107-01",
-        "q-t108-01",
-        "q-t109-01",
-        "q-t109-02",
-        "q-t112-01",
-        "q-t114-01",
-        "q-t115-01",
-        "q-t115-02",
-        "q-t116-01",
-        "q-t117-01",
-        "q-t120-01",
-        "q-t122-01",
-        "q-t125-01",
-        "q-t125-02",
-        "q-t127-01",
-        "q-t7-01",
-        "q-t11-01",
-        "q-t13-01",
-        "q-t14-01",
         "q-t17-01"
       ]
     },
@@ -7477,40 +7462,25 @@
         "q-t25-02",
         "q-t26-01",
         "q-t27-01",
-        "q-t28-01",
-        "q-t28-02",
-        "q-t29-01",
-        "q-t29-02",
-        "q-t31-01",
-        "q-t33-01",
-        "q-t33-02",
-        "q-t34-01",
-        "q-t35-01",
-        "q-t36-01",
         "q-t114-01",
         "q-t115-01",
         "q-t115-02",
+        "q-t116-01",
         "q-t117-01",
-        "q-t32-01"
+        "q-t118-01",
+        "q-t118-02",
+        "q-t119-01",
+        "q-t120-01",
+        "q-t121-01",
+        "q-t121-02",
+        "q-t122-01",
+        "q-t122-02",
+        "q-t123-01"
       ]
     },
     {
       "missionId": "mission-04-boundary-lab",
       "questionIds": [
-        "q-t21-01",
-        "q-t21-02",
-        "q-t22-01",
-        "q-t22-02",
-        "q-t22-03",
-        "q-t22-04",
-        "q-t23-01",
-        "q-t23-02",
-        "q-t23-03",
-        "q-t24-01",
-        "q-t25-01",
-        "q-t25-02",
-        "q-t26-01",
-        "q-t27-01",
         "q-t28-01",
         "q-t28-02",
         "q-t29-01",
@@ -7521,74 +7491,39 @@
         "q-t34-01",
         "q-t35-01",
         "q-t36-01",
+        "q-t37-01",
+        "q-t37-02",
         "q-t33-03",
+        "q-t30-01",
         "q-t32-01"
       ]
     },
     {
       "missionId": "mission-05-pool-lock",
       "questionIds": [
-        "q-t37-01",
-        "q-t37-02",
         "q-t38-01",
         "q-t38-02",
         "q-t38-03",
         "q-t38-04",
-        "q-t39-01",
-        "q-t39-02",
-        "q-t40-01",
-        "q-t40-02",
         "q-t41-01",
         "q-t41-02",
         "q-t41-03",
         "q-t42-01",
-        "q-t43-01",
-        "q-t43-02",
         "q-t44-01",
         "q-t44-02",
         "q-t44-03",
-        "q-t45-01",
-        "q-t45-02",
-        "q-t45-03",
-        "q-t45-04",
-        "q-t124-01",
-        "q-t124-02",
-        "q-t124-03",
-        "q-t124-04",
-        "q-t124-05",
-        "q-t124-06",
-        "q-t124-07",
-        "q-t92-01",
-        "q-t92-02",
         "q-t38-05"
       ]
     },
     {
       "missionId": "mission-06-de-clock",
       "questionIds": [
-        "q-t37-01",
-        "q-t37-02",
-        "q-t38-01",
-        "q-t38-02",
-        "q-t38-03",
-        "q-t38-04",
         "q-t39-01",
         "q-t39-02",
         "q-t40-01",
         "q-t40-02",
-        "q-t41-01",
-        "q-t41-02",
-        "q-t41-03",
-        "q-t42-01",
         "q-t43-01",
         "q-t43-02",
-        "q-t44-01",
-        "q-t44-02",
-        "q-t44-03",
-        "q-t45-01",
-        "q-t45-02",
-        "q-t45-03",
-        "q-t45-04",
         "q-t124-01",
         "q-t124-02",
         "q-t124-03",
@@ -7601,41 +7536,10 @@
     {
       "missionId": "mission-07-medical-room",
       "questionIds": [
-        "q-t37-01",
-        "q-t37-02",
-        "q-t38-01",
-        "q-t38-02",
-        "q-t38-03",
-        "q-t38-04",
-        "q-t39-01",
-        "q-t39-02",
-        "q-t40-01",
-        "q-t40-02",
-        "q-t41-01",
-        "q-t41-02",
-        "q-t41-03",
-        "q-t42-01",
-        "q-t43-01",
-        "q-t43-02",
-        "q-t44-01",
-        "q-t44-02",
-        "q-t44-03",
         "q-t45-01",
         "q-t45-02",
         "q-t45-03",
         "q-t45-04",
-        "q-t124-01",
-        "q-t124-02",
-        "q-t124-03",
-        "q-t124-04",
-        "q-t124-05",
-        "q-t124-06",
-        "q-t124-07"
-      ]
-    },
-    {
-      "missionId": "mission-08-equipment-vault",
-      "questionIds": [
         "q-t46-01",
         "q-t46-02",
         "q-t47-01",
@@ -7649,23 +7553,14 @@
         "q-t54-02",
         "q-t55-01",
         "q-t55-02",
-        "q-t56-01",
-        "q-t56-02",
-        "q-t56-03",
-        "q-t56-04",
-        "q-t56-05",
-        "q-t56-06",
-        "q-t56-07",
-        "q-t56-08",
-        "q-t57-01",
-        "q-t58-01",
-        "q-t59-01",
-        "q-t60-01",
-        "q-t61-01",
-        "q-t61-02",
-        "q-t61-03",
-        "q-t62-01",
-        "q-t62-02",
+        "q-t50-01",
+        "q-t51-01",
+        "q-t52-01"
+      ]
+    },
+    {
+      "missionId": "mission-08-equipment-vault",
+      "questionIds": [
         "q-t64-01",
         "q-t64-02",
         "q-t68-01",
@@ -7679,11 +7574,6 @@
         "q-t73-02",
         "q-t74-01",
         "q-t75-01",
-        "q-t30-01",
-        "q-t50-01",
-        "q-t51-01",
-        "q-t52-01",
-        "q-t63-01",
         "q-t65-01",
         "q-t66-01",
         "q-t67-01",
@@ -7693,58 +7583,13 @@
     {
       "missionId": "mission-09-video-desk",
       "questionIds": [
-        "q-t46-01",
-        "q-t46-02",
-        "q-t47-01",
-        "q-t47-02",
-        "q-t47-03",
-        "q-t48-01",
-        "q-t48-02",
-        "q-t49-01",
-        "q-t53-01",
-        "q-t54-01",
-        "q-t54-02",
-        "q-t55-01",
-        "q-t55-02",
-        "q-t56-01",
-        "q-t56-02",
-        "q-t56-03",
-        "q-t56-04",
-        "q-t56-05",
-        "q-t56-06",
-        "q-t56-07",
-        "q-t56-08",
-        "q-t57-01",
-        "q-t58-01",
-        "q-t59-01",
         "q-t60-01",
         "q-t61-01",
         "q-t61-02",
         "q-t61-03",
         "q-t62-01",
         "q-t62-02",
-        "q-t64-01",
-        "q-t64-02",
-        "q-t68-01",
-        "q-t68-02",
-        "q-t68-03",
-        "q-t70-01",
-        "q-t71-01",
-        "q-t72-01",
-        "q-t72-02",
-        "q-t73-01",
-        "q-t73-02",
-        "q-t74-01",
-        "q-t75-01",
-        "q-t30-01",
-        "q-t50-01",
-        "q-t51-01",
-        "q-t52-01",
-        "q-t63-01",
-        "q-t65-01",
-        "q-t66-01",
-        "q-t67-01",
-        "q-t69-01"
+        "q-t63-01"
       ]
     },
     {
@@ -7759,19 +7604,7 @@
         "q-t92-01",
         "q-t92-02",
         "q-t93-01",
-        "q-t93-02",
-        "q-t94-01",
-        "q-t94-02",
-        "q-t94-03",
-        "q-t94-04",
-        "q-t94-05",
-        "q-t94-06",
-        "q-t94-07",
-        "q-t95-01",
-        "q-t95-02",
-        "q-t95-03",
-        "q-t33-03",
-        "q-t38-05"
+        "q-t93-02"
       ]
     },
     {
@@ -7785,16 +7618,9 @@
         "q-t56-06",
         "q-t56-07",
         "q-t56-08",
-        "q-t90-01",
-        "q-t90-02",
-        "q-t90-03",
-        "q-t91-01",
-        "q-t91-02",
-        "q-t91-03",
-        "q-t92-01",
-        "q-t92-02",
-        "q-t93-01",
-        "q-t93-02",
+        "q-t57-01",
+        "q-t58-01",
+        "q-t59-01",
         "q-t94-01",
         "q-t94-02",
         "q-t94-03",
@@ -7804,25 +7630,24 @@
         "q-t94-07",
         "q-t95-01",
         "q-t95-02",
-        "q-t95-03",
-        "q-t33-03",
-        "q-t38-05"
+        "q-t95-03"
       ]
     },
     {
       "missionId": "mission-12-card-maze",
       "questionIds": [
+        "q-t107-01",
+        "q-t108-01",
+        "q-t109-01",
+        "q-t109-02",
         "q-t109-03",
         "q-t110-01",
         "q-t111-01",
+        "q-t112-01",
         "q-t113-01",
-        "q-t118-01",
-        "q-t118-02",
-        "q-t119-01",
-        "q-t121-01",
-        "q-t121-02",
-        "q-t122-02",
-        "q-t123-01",
+        "q-t125-01",
+        "q-t125-02",
+        "q-t127-01",
         "q-t128-01",
         "q-t130-01",
         "q-t131-01",

@@ -43,7 +43,7 @@ describe('toegankelijkheid', () => {
     await waitFor(() => expect(screen.getByRole('main')).toHaveFocus());
   });
 
-  it('ondersteunt nieuwe training, modus kiezen en missie openen zonder muis', async () => {
+  it('ondersteunt nieuwe training, modus kiezen en fase openen zonder muis', async () => {
     const user = userEvent.setup();
     renderApp();
 
@@ -61,24 +61,24 @@ describe('toegankelijkheid', () => {
     await user.keyboard(' ');
     expect(examMode).toBeChecked();
 
-    screen.getByRole('button', { name: 'Naar missieoverzicht' }).focus();
+    screen.getByRole('button', { name: 'Naar faseoverzicht' }).focus();
     await user.keyboard('{Enter}');
 
     expect(
       await screen.findByRole('heading', {
         level: 1,
-        name: 'Open de schermzaal stap voor stap',
+        name: 'Kies een situatie uit de wedstrijddag',
       }),
     ).toBeInTheDocument();
 
-    const missionLinks = await screen.findAllByRole('link', { name: 'Missie openen' });
+    const missionLinks = await screen.findAllByRole('link', { name: 'Fase openen' });
     missionLinks[0]?.focus();
     await user.keyboard('{Enter}');
 
     expect(
       await screen.findByRole('heading', {
         level: 1,
-        name: 'De vergrendelde ontvangsthal',
+        name: 'Aanmelding en wedstrijdprotocol',
       }),
     ).toBeInTheDocument();
   });
@@ -87,7 +87,7 @@ describe('toegankelijkheid', () => {
     const user = userEvent.setup();
     renderApp('/mission/mission-01-salute-start');
 
-    const startButton = await screen.findByRole('button', { name: 'Start missie' });
+    const startButton = await screen.findByRole('button', { name: 'Start fase' });
     startButton.focus();
     await user.keyboard('{Enter}');
 
@@ -107,7 +107,7 @@ describe('toegankelijkheid', () => {
     expect(screen.getByRole('link', { name: 'Regel t.1' })).toBeInTheDocument();
   });
 
-  it('ondersteunt meerkeuze beantwoorden, missie afronden en resultaat bekijken zonder muis', async () => {
+  it('ondersteunt meerkeuze beantwoorden, fase afronden en resultaat bekijken zonder muis', async () => {
     const user = userEvent.setup();
     const question = await seedOneQuestionSession();
     renderApp('/play/mission-01-salute-start');
@@ -182,7 +182,7 @@ async function waitForRoute(path: string) {
   const expectedHeadings: Record<string, string> = {
     '/': 'DegenRef Escape',
     '/start': 'Stel je sessie samen',
-    '/missions': 'Open de schermzaal stap voor stap',
+    '/missions': 'Kies een situatie uit de wedstrijddag',
     '/rules': 'Zoek in de Nederlandse leervertaling',
     '/review': 'Review vragen en brongegevens',
     '/settings': 'Regels, privacy en lokale gegevens',

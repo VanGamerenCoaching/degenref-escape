@@ -1,6 +1,6 @@
 # DegenRef Escape
 
-DegenRef Escape is een Nederlandstalige, niet-officiele educatieve escape-roomwebapp voor mensen die leren arbitreren bij het degenschermen. De app laat gebruikers oefenen met beslissingen, regelverwijzingen, missies, hints, feedback en resultaten op basis van meegeleverde contentbestanden.
+DegenRef Escape is een Nederlandstalige, niet-officiele educatieve webapp voor mensen die leren arbitreren bij het degenschermen. De app laat gebruikers oefenen met beslissingen, regelverwijzingen, open toernooifases, hints, feedback en resultaten op basis van meegeleverde contentbestanden.
 
 De app is bedoeld voor beginnende en gevorderde degenscheidsrechters, opleiders, clubbegeleiders en schermers die regels beter willen begrijpen. De app is geen officieel examen en geen officiele app van de FIE, KNAS of een andere schermbond.
 
@@ -11,8 +11,8 @@ De Nederlandse teksten zijn een niet-officiele leervertaling. Raadpleeg bij twij
 ## Schermen En Functies
 
 - Startscherm met onboarding voor spelmodus, regelseizoen en ervaringsniveau
-- Missieoverzicht met ontgrendeling, filters, voortgang en beste scores
-- Missiedetailpagina met verhaalintroductie, leerdoelen en regelartikelen
+- Faseoverzicht met filters, voortgang en beste scores
+- Fasedetailpagina met situatie-introductie, leerdoelen en regelartikelen
 - Speelroute voor meerkeuzevragen en volgordevragen
 - Hints, levens, score en modusafhankelijke feedback
 - Resultatenscherm met score, categorieanalyse en deterministisch oefenadvies
@@ -107,7 +107,7 @@ Toon een samenvatting van de huidige content:
 npm run content:summary
 ```
 
-De huidige gegenereerde content bevat 6 rooms, 153 leerkaarten, 12 missies en 231 vragen. De seizoenswaarden zijn `2025-2026` en `2026-2027`. Op dit moment zijn alle 231 vragen als niet gereviewd gemarkeerd.
+De huidige gegenereerde content bevat 6 bronthema's, 153 leerkaarten, 12 open toernooifases en 231 vragen. De seizoenswaarden zijn `2025-2026` en `2026-2027`. Op dit moment zijn alle 231 vragen als niet gereviewd gemarkeerd.
 
 ## Productiebuild Maken
 
@@ -210,7 +210,7 @@ src/
   app/          Applicatieschil, routerintegratie en PWA-melding
   components/   Herbruikbare UI-componenten
   content/      Contenttypes, loader, validatie en gegenereerde content
-  features/     Game-, missie-, vraag-, resultaat-, regel- en reviewlogica
+  features/     Game-, fase-, vraag-, resultaat-, regel- en reviewlogica
   hooks/        Herbruikbare React-hooks
   pages/        Routepagina's
   storage/      localStorage, state, reducers en migraties

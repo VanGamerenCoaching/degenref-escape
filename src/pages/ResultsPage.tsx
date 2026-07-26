@@ -36,13 +36,13 @@ export function ResultsPage() {
       <EmptyState
         action={
           <Link className="button button--primary" to="/missions">
-            Naar missieoverzicht
+            Naar faseoverzicht
           </Link>
         }
         headingLevel={1}
         title="Geen resultaat beschikbaar"
       >
-        Rond eerst een missie af om je score en oefenadvies te bekijken.
+        Rond eerst een fase af om je score en oefenadvies te bekijken.
       </EmptyState>
     );
   }
@@ -96,7 +96,7 @@ export function ResultsPage() {
         <div className="result-hero__summary">
           <span className="eyebrow">Eindstatus</span>
           <strong>
-            {summary.missionCompleted ? 'Missie voltooid' : 'Missie nog open'}
+            {summary.missionCompleted ? 'Fase voltooid' : 'Fase nog open'}
           </strong>
           <p>
             {summary.accuracy >= 80
@@ -209,7 +209,7 @@ export function ResultsPage() {
         <h2>Verder oefenen</h2>
         <div className="button-row button-row--wrap result-actions">
           <AppButton onClick={() => startQuestionSet([], true)}>
-            Missie opnieuw spelen
+            Fase opnieuw spelen
           </AppButton>
           <AppButton
             disabled={wrongQuestionIds.length === 0}
@@ -227,11 +227,11 @@ export function ResultsPage() {
           </AppButton>
           {nextMissionId === null ? null : (
             <Link className="button button--secondary" to={`/mission/${nextMissionId}`}>
-              Volgende missie
+              Volgende fase
             </Link>
           )}
           <Link className="button button--ghost" to="/missions">
-            Terug naar missieoverzicht
+            Terug naar faseoverzicht
           </Link>
           <AppButton onClick={() => setConfirmDelete(true)} variant="danger">
             Resultaat verwijderen
@@ -251,7 +251,7 @@ export function ResultsPage() {
         title="Resultaat verwijderen?"
       >
         Dit verwijdert de actieve resultatensessie uit lokale opslag. Eerdere
-        missievoortgang blijft staan.
+        fasevoortgang blijft staan.
       </ConfirmDialog>
     </div>
   );

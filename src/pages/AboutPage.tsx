@@ -12,8 +12,8 @@ export function AboutPage() {
         <p className="eyebrow">Over deze app</p>
         <h1>{APP_NAME}</h1>
         <p>
-          Een Nederlandstalige educatieve escape-roomwebapp voor mensen die leren
-          arbitreren bij het degenschermen.
+          Een Nederlandstalige educatieve webapp voor mensen die leren arbitreren bij
+          het degenschermen, opgebouwd rond fases en situaties van een wedstrijddag.
         </p>
       </section>
 

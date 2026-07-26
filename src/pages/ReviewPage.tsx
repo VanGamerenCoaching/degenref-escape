@@ -193,12 +193,12 @@ export function ReviewPage() {
             />
           </label>
           <label>
-            <span>Missie</span>
+            <span>Fase</span>
             <select
               onChange={(event) => updateFilter('missionId', event.target.value)}
               value={filters.missionId}
             >
-              <option value="all">Alle missies</option>
+              <option value="all">Alle fases</option>
               {filterOptions.missions.map((mission) => (
                 <option key={mission.id} value={mission.id}>
                   {mission.title}
@@ -357,10 +357,10 @@ function ReviewQuestionCard({
               <dd>{question.rulesVersion}</dd>
             </div>
             <div>
-              <dt>Gekoppelde missie</dt>
+              <dt>Gekoppelde fase</dt>
               <dd>
                 {item.missionTitles.length === 0
-                  ? 'Geen missie gekoppeld'
+                  ? 'Geen fase gekoppeld'
                   : item.missionTitles.join(', ')}
               </dd>
             </div>

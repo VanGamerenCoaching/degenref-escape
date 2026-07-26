@@ -58,7 +58,7 @@ export function RuleArticlePage() {
         <h2>Leervertaling</h2>
         {item.room === null ? null : (
           <p className="form-hint">
-            Onderwerp: {lesson.section}. Kamer: {item.room.title} - {item.room.subtitle}.
+            Onderwerp: {lesson.section}. Thema: {item.room.title} - {item.room.subtitle}.
           </p>
         )}
         {learningExplanation === null ? null : (
@@ -122,9 +122,9 @@ export function RuleArticlePage() {
           )}
         </Panel>
         <Panel>
-          <h2>Gerelateerde missies</h2>
+          <h2>Gerelateerde fases</h2>
           {missions.length === 0 ? (
-            <p>Geen missies gekoppeld.</p>
+            <p>Geen fases gekoppeld.</p>
           ) : (
             <div className="tag-row">
               {missions.map((mission) => (

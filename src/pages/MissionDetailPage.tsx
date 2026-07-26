@@ -14,7 +14,6 @@ import {
   getMissionCategories,
   getMissionDifficulty,
   getMissionQuestions,
-  getMissionStatus,
   selectSessionQuestions,
 } from '../features/missions/missionUtils';
 import { useGameState } from '../storage/useGameState';
@@ -33,20 +32,19 @@ export function MissionDetailPage() {
   if (mission === undefined) {
     return (
       <Panel>
-        <h1>Missie niet gevonden</h1>
+        <h1>Fase niet gevonden</h1>
         <Link className="button button--secondary" to="/missions">
-          Terug naar missieoverzicht
+          Terug naar faseoverzicht
         </Link>
       </Panel>
     );
   }
 
   const playableQuestions = selectSessionQuestions(content, mission.id, state.settings);
-  const status = getMissionStatus(mission, content.missions, state.progress, state.settings);
   const stats = state.progress.missionStats[mission.id];
   const difficulty = getMissionDifficulty(allQuestions);
   const categories = getMissionCategories(allQuestions);
-  const canStart = status !== 'locked' && playableQuestions.length > 0;
+  const canStart = playableQuestions.length > 0;
 
   const startMission = () => {
     if (!canStart) {
@@ -67,23 +65,23 @@ export function MissionDetailPage() {
   return (
     <div className="page-stack">
       <section className="page-heading">
-        <p className="eyebrow">Missie</p>
+        <p className="eyebrow">Toernooifase</p>
         <h1>{mission.title}</h1>
         <p>{mission.story}</p>
       </section>
 
       {!mission.reviewed ? (
-        <StatusMessage title="Niet gecontroleerde missie" variant="warning">
-          Deze missie is speelbaar als leerinhoud, maar niet inhoudelijk
+        <StatusMessage title="Niet gecontroleerde fase" variant="warning">
+          Deze fase is speelbaar als leerinhoud, maar niet inhoudelijk
           gecontroleerd. De app suggereert geen officiële goedkeuring.
         </StatusMessage>
       ) : null}
 
       <div className="detail-grid">
         <Panel className="mission-brief">
-          <h2>Missiedoel</h2>
+          <h2>Fasedoel</h2>
           <p>{mission.passCondition}</p>
-          <h3>Beloning</h3>
+          <h3>Afronding</h3>
           <p>{mission.reward}</p>
           <div className="tag-row">
             <DifficultyBadge difficulty={difficulty} />
@@ -117,7 +115,7 @@ export function MissionDetailPage() {
 
         <Panel>
           <h2>Voortgang</h2>
-          <div className="mission-readiness" aria-label="Missiestatus">
+          <div className="mission-readiness" aria-label="Fasestatus">
             <span>{playableQuestions.length} opdrachten klaar</span>
             <span>Seizoen {state.settings.selectedSeason}</span>
           </div>
@@ -137,12 +135,6 @@ export function MissionDetailPage() {
               <dd>{stats?.bestScore?.points ?? 'Nog geen'}</dd>
             </div>
           </dl>
-          {status === 'locked' ? (
-            <StatusMessage variant="warning">
-              Rond eerst de vorige missie af, of maak alle missies beschikbaar in
-              leermodus via instellingen.
-            </StatusMessage>
-          ) : null}
           {playableQuestions.length === 0 ? (
             <StatusMessage variant="danger">
               Er zijn geen vragen beschikbaar met de huidige filters.
@@ -151,11 +143,11 @@ export function MissionDetailPage() {
           <div className="button-row">
             <AppButton disabled={!canStart} onClick={startMission}>
               {stats?.lastCompletedAt === null || stats?.lastCompletedAt === undefined
-                ? 'Start missie'
+                ? 'Start fase'
                 : 'Speel opnieuw'}
             </AppButton>
             <Link className="button button--secondary" to="/missions">
-              Missieoverzicht
+              Faseoverzicht
             </Link>
           </div>
         </Panel>

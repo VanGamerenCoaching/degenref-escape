@@ -5,8 +5,8 @@ Voer deze checks uit in een echte browser voor publicatie:
 - [ ] Startscherm opent zonder consolefouten.
 - [ ] Nieuwe training starten werkt volledig met toetsenbord.
 - [ ] Modus, seizoen en ervaringsniveau kiezen werkt.
-- [ ] Missieoverzicht toont missies, filters en ontgrendeling.
-- [ ] Missiedetail toont verhaal, artikelen en reviewstatus.
+- [ ] Faseoverzicht toont alle fases, filters en voortgang.
+- [ ] Fasedetail toont situatie-introductie, artikelen en reviewstatus.
 - [ ] Meerkeuzevragen kunnen geselecteerd en bevestigd worden.
 - [ ] Volgordevragen werken met omhoog- en omlaagknoppen.
 - [ ] Hints verschijnen een voor een.

@@ -175,7 +175,7 @@ export function StartPage() {
 
         <div className="form-submit-bar">
           <span>Je training wordt alleen lokaal opgeslagen.</span>
-          <AppButton type="submit">Naar missieoverzicht</AppButton>
+          <AppButton type="submit">Naar faseoverzicht</AppButton>
         </div>
       </form>
     </div>

@@ -108,32 +108,25 @@ describe('missionUtils', () => {
       .toEqual(['q-easy-1', 'q-easy-2']);
   });
 
-  it('bepaalt missiestatus op basis van voortgang en leermodus-instelling', () => {
+  it('houdt alle niet-voltooide fases direct beschikbaar', () => {
     const missions = [createMission({ id: 'mission-1' }), createMission({ id: 'mission-2' })];
     const firstMission = missions[0];
     const secondMission = missions[1];
-    const settings = createDefaultSettings(['2025-2026']);
     const progress = createInitialProgress(missions.map((mission) => mission.id));
 
     if (firstMission === undefined || secondMission === undefined) {
       throw new Error('Testmissies ontbreken.');
     }
 
-    expect(getMissionStatus(firstMission, missions, progress, settings)).toBe('available');
-    expect(getMissionStatus(secondMission, missions, progress, settings)).toBe('locked');
-    expect(
-      getMissionStatus(secondMission, missions, progress, {
-        ...settings,
-        allowAllMissionsInLearning: true,
-        preferredMode: 'learning',
-      }),
-    ).toBe('available');
+    expect(getMissionStatus(firstMission, progress)).toBe('available');
+    expect(getMissionStatus(secondMission, progress)).toBe('available');
     expect(
       getMissionStatus(
         secondMission,
-        missions,
-        { ...progress, completedMissionIds: ['mission-2'] },
-        settings,
+        {
+          ...progress,
+          completedMissionIds: ['mission-2'],
+        },
       ),
     ).toBe('completed');
   });

@@ -107,7 +107,7 @@ export function AppShell() {
           )}
           <nav aria-label="Hoofdnavigatie" className="main-nav">
             <NavLink to="/start">Start</NavLink>
-            <NavLink to="/missions">Missies</NavLink>
+            <NavLink to="/missions">Fases</NavLink>
             <NavLink to="/rules">Regels</NavLink>
           </nav>
           <button

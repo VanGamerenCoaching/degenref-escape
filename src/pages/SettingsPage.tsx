@@ -122,11 +122,6 @@ export function SettingsPage() {
               onChange={(checked) => updateSettings({ excludeUnreviewedQuestions: !checked })}
             />
             <CheckboxField
-              checked={state.settings.allowAllMissionsInLearning}
-              label="Alle missies beschikbaar maken in leermodus"
-              onChange={(checked) => updateSettings({ allowAllMissionsInLearning: checked })}
-            />
-            <CheckboxField
               checked={state.settings.resultsStorageEnabled}
               label="Resultaten opslaan"
               onChange={(checked) => updateSettings({ resultsStorageEnabled: checked })}
@@ -189,15 +184,15 @@ export function SettingsPage() {
             <dd>{savedHintCount}</dd>
           </div>
           <div>
-            <dt>Voltooide missies</dt>
+            <dt>Voltooide fases</dt>
             <dd>{state.progress.completedMissionIds.length}</dd>
           </div>
           <div>
-            <dt>Ontgrendelde missies</dt>
-            <dd>{state.progress.unlockedMissionIds.length}</dd>
+            <dt>Open toernooifases</dt>
+            <dd>{missionIds.length}</dd>
           </div>
           <div>
-            <dt>Missiepogingen</dt>
+            <dt>Fasepogingen</dt>
             <dd>{missionAttemptCount}</dd>
           </div>
           <div>
@@ -208,7 +203,7 @@ export function SettingsPage() {
             <dt>Instellingen opgeslagen</dt>
             <dd>
               Seizoen, spelmodus, niveau, reviewfilter, animatie, geluid,
-              missieontgrendeling en resultaatopslag
+              regelverwijzingen en resultaatopslag
             </dd>
           </div>
           <div>
@@ -262,7 +257,7 @@ export function SettingsPage() {
         open={confirmTarget === 'session'}
         title="Actieve sessie verwijderen?"
       >
-        Je huidige sessie wordt gewist. Voltooide missievoortgang blijft bestaan.
+        Je huidige sessie wordt gewist. Voltooide fasevoortgang blijft bestaan.
       </ConfirmDialog>
       <ConfirmDialog
         confirmLabel="Alles verwijderen"

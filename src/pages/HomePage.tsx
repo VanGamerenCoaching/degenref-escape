@@ -18,7 +18,7 @@ export function HomePage() {
         <p className="hero__subtitle">Train je beslissingen als degenscheidsrechter</p>
         <div className="hero__status-strip" aria-label="App-overzicht">
           <span>Piste vrij</span>
-          <span>{content.missions.length} missies</span>
+          <span>{content.missions.length} open fases</span>
           <span>{content.questions.length} vragen</span>
         </div>
         <div className="hero__actions">
@@ -46,8 +46,9 @@ export function HomePage() {
       <Panel>
         <h2>Lokale trainingsruimte</h2>
         <p>
-          Alle voortgang blijft op dit apparaat in deze browser. Er zijn geen accounts,
-          backend, analytics of trackingcookies.
+          Kies vrij uit herkenbare fases van een wedstrijddag. Alle voortgang blijft
+          op dit apparaat in deze browser. Er zijn geen accounts, backend, analytics
+          of trackingcookies.
         </p>
         <StatusMessage variant="warning">
           Dit is geen officiële app van de FIE, KNAS of een andere schermbond.
@@ -57,8 +58,8 @@ export function HomePage() {
 
       <div className="card-grid card-grid--three">
         <Card>
-          <h2>{content.missions.length} missies</h2>
-          <p>Gebaseerd op het aangeleverde contentpakket.</p>
+          <h2>{content.missions.length} toernooifases</h2>
+          <p>Van aanmelding en pistecontrole tot treffers, kaarten en protest.</p>
         </Card>
         <Card>
           <h2>{content.questions.length} vragen</h2>

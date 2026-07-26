@@ -8,13 +8,13 @@ const reviewStatuses = countBy(content.questions.map((question) => String(questi
 
 console.log('DegenRef Escape content summary');
 console.log(`Canonieke bron: ${content.source.canonicalFile}`);
-console.log(`Rooms: ${String(content.rooms.length)}`);
-console.log(`Lessons: ${String(content.lessons.length)}`);
-console.log(`Missions: ${String(content.missions.length)}`);
-console.log(`Questions: ${String(content.questions.length)}`);
+console.log(`Bronthema's: ${String(content.rooms.length)}`);
+console.log(`Leerkaarten: ${String(content.lessons.length)}`);
+console.log(`Toernooifases: ${String(content.missions.length)}`);
+console.log(`Vragen: ${String(content.questions.length)}`);
 console.log(`Vraagtypen: ${formatCounts(questionTypes)}`);
 console.log(`Categorieen (${String(categories.length)}): ${categories.join(', ')}`);
-console.log(`Missies (${String(content.missions.length)}): ${content.missions.map((mission) => mission.id).join(', ')}`);
+console.log(`Fases (${String(content.missions.length)}): ${content.missions.map((mission) => mission.id).join(', ')}`);
 console.log(`Seizoenswaarden: ${content.seasonValues.join(', ')}`);
 console.log(`Reglementversies: ${ruleVersions.join(', ')}`);
 console.log(`Reviewstatussen: ${formatCounts(reviewStatuses)}`);

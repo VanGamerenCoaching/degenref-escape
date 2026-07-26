@@ -11,7 +11,7 @@ export function FeedbackPage() {
         regelreferentie. In examenmodus verschijnt feedback pas na afronding.
       </StatusMessage>
       <Link className="button button--primary" to="/missions">
-        Naar missies
+        Naar fases
       </Link>
     </Panel>
   );

@@ -44,7 +44,7 @@ describe('appStateReducer', () => {
     expect(next.settings.selectedSeason).toBe('2026-2027');
   });
 
-  it('rondt een missie af, bewaart de beste score en ontgrendelt de volgende missie', () => {
+  it('rondt een missie af, bewaart de beste score en noteert de volgende missie', () => {
     const missionIds = ['mission-1', 'mission-2'];
     const question = questionFixture({ id: 'q-1' });
     const started = appStateReducer(

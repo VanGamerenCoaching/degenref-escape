@@ -20,13 +20,21 @@ import { formatPercentage } from '../utils/format';
 import { useGameState } from '../storage/useGameState';
 
 const statusLabels: Record<MissionStatus | 'all' | 'not-started' | 'in-progress', string> = {
-  all: 'Alle missies',
-  available: 'Beschikbaar',
+  all: 'Alle fases',
+  available: 'Open',
   completed: 'Voltooid',
   locked: 'Vergrendeld',
   'not-started': 'Niet gestart',
   'in-progress': 'Bezig',
 };
+
+const statusFilterOptions: Array<Exclude<keyof typeof statusLabels, 'locked'>> = [
+  'all',
+  'not-started',
+  'in-progress',
+  'available',
+  'completed',
+];
 
 export function MissionsPage() {
   const content = useContent();
@@ -42,12 +50,7 @@ export function MissionsPage() {
   );
   const missionCards = content.missions.map((mission) => {
     const questions = getMissionQuestions(content, mission.id);
-    const status = getMissionStatus(
-      mission,
-      content.missions,
-      state.progress,
-      state.settings,
-    );
+    const status = getMissionStatus(mission, state.progress);
     const stats = state.progress.missionStats[mission.id];
     const isInProgress = state.activeSession?.missionId === mission.id;
 
@@ -78,22 +81,22 @@ export function MissionsPage() {
   return (
     <div className="page-stack">
       <section className="page-heading">
-        <p className="eyebrow">Missies</p>
-        <h1>Open de schermzaal stap voor stap</h1>
+        <p className="eyebrow">Toernooifases</p>
+        <h1>Kies een situatie uit de wedstrijddag</h1>
         <p>
-          De eerste missie is direct beschikbaar. Daarna ontgrendel je steeds de
-          volgende missie door de vorige af te ronden.
+          Alle fases staan direct open. Ze volgen herkenbare momenten die een
+          degenscheidsrechter tijdens een toernooi tegenkomt.
         </p>
       </section>
 
       <section className="mission-toolbar" aria-labelledby="mission-filters-title">
         <div>
-          <h2 id="mission-filters-title">Missies filteren</h2>
+          <h2 id="mission-filters-title">Fases filteren</h2>
           <p className="result-count">
-            {visibleMissions.length} van {missionCards.length} missies zichtbaar
+            {visibleMissions.length} van {missionCards.length} fases zichtbaar
           </p>
         </div>
-        <div className="filters" aria-label="Missiefilters">
+        <div className="filters" aria-label="Fasefilters">
           <label>
             Status
             <select
@@ -102,9 +105,9 @@ export function MissionsPage() {
                 setStatusFilter(event.target.value as typeof statusFilter)
               }
             >
-              {Object.entries(statusLabels).map(([value, label]) => (
+              {statusFilterOptions.map((value) => (
                 <option key={value} value={value}>
-                  {label}
+                  {statusLabels[value]}
                 </option>
               ))}
             </select>
@@ -139,8 +142,8 @@ export function MissionsPage() {
       </section>
 
       {visibleMissions.length === 0 ? (
-        <EmptyState title="Geen missies gevonden">
-          Pas de filters aan om weer missies te tonen.
+        <EmptyState title="Geen fases gevonden">
+          Pas de filters aan om weer fases te tonen.
         </EmptyState>
       ) : (
         <div className="mission-grid">
@@ -152,7 +155,7 @@ export function MissionsPage() {
               <div className="mission-card__rail" aria-hidden="true" />
               <div className="mission-card__header">
                 <h2>{card.mission.title}</h2>
-                <Badge variant={card.status === 'locked' ? 'warning' : 'secondary'}>
+                <Badge variant={card.status === 'completed' ? 'success' : 'secondary'}>
                   {statusLabels[card.status]}
                 </Badge>
               </div>
@@ -195,17 +198,11 @@ export function MissionsPage() {
                   value={state.activeSession.answers.length}
                 />
               ) : null}
-              {card.status === 'locked' ? (
-                <p className="form-hint">
-                  Rond de vorige missie af om deze missie te openen.
-                </p>
-              ) : (
-                <div className="mission-card__action">
-                  <Link className="button button--primary" to={`/mission/${card.mission.id}`}>
-                    Missie openen
-                  </Link>
-                </div>
-              )}
+              <div className="mission-card__action">
+                <Link className="button button--primary" to={`/mission/${card.mission.id}`}>
+                  Fase openen
+                </Link>
+              </div>
             </Card>
           ))}
         </div>
@@ -216,12 +213,12 @@ export function MissionsPage() {
 
 function describeMissionSize(questionCount: number): string {
   if (questionCount <= 5) {
-    return 'compacte opdracht';
+    return 'compacte fase';
   }
 
   if (questionCount <= 12) {
-    return 'middelgrote missie';
+    return 'middelgrote fase';
   }
 
-  return 'uitgebreide missie';
+  return 'uitgebreide fase';
 }

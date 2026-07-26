@@ -84,22 +84,13 @@ export function matchesExperienceLevel(
 
 export function getMissionStatus(
   mission: MissionContent,
-  missions: readonly MissionContent[],
   progress: GameProgress,
-  settings: AppSettings,
 ): MissionStatus {
   if (progress.completedMissionIds.includes(mission.id)) {
     return 'completed';
   }
 
-  if (
-    progress.unlockedMissionIds.includes(mission.id) ||
-    (settings.preferredMode === 'learning' && settings.allowAllMissionsInLearning)
-  ) {
-    return 'available';
-  }
-
-  return missions[0]?.id === mission.id ? 'available' : 'locked';
+  return 'available';
 }
 
 export function getMissionCategories(questions: readonly QuestionContent[]): string[] {

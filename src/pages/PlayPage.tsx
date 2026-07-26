@@ -64,9 +64,9 @@ export function PlayPage() {
   if (mission === undefined) {
     return (
       <Panel>
-        <h1>Missie niet gevonden</h1>
+        <h1>Fase niet gevonden</h1>
         <Link className="button button--secondary" to="/missions">
-          Terug naar missieoverzicht
+          Terug naar faseoverzicht
         </Link>
       </Panel>
     );
@@ -99,7 +99,7 @@ export function PlayPage() {
         headingLevel={1}
         title="Geen actieve sessie"
       >
-        Start deze missie om de vragenreeks lokaal op te slaan en te kunnen hervatten.
+        Start deze fase om de vragenreeks lokaal op te slaan en te kunnen hervatten.
       </EmptyState>
     );
   }
@@ -143,7 +143,7 @@ export function PlayPage() {
           </Link>
         }
         headingLevel={1}
-        title="Missie afgerond"
+        title="Fase afgerond"
       >
         De sessie is voltooid. Bekijk je score en oefenadvies.
       </EmptyState>
@@ -212,7 +212,7 @@ export function PlayPage() {
       </section>
 
       <ProgressBar
-        label="Missievoortgang"
+        label="Fasevoortgang"
         max={session.questionOrder.length}
         value={progressValue}
       />

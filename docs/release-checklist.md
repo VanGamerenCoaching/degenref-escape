@@ -34,7 +34,7 @@ Gebruik deze checklist voordat de eerste publieke release wordt gecommit, gepush
 - [ ] Startscherm opent zonder consolefouten.
 - [ ] Nieuwe training starten werkt.
 - [ ] Modus, seizoen en niveau kiezen werkt met toetsenbord.
-- [ ] Missies laden en ontgrendelen logisch.
+- [ ] Alle toernooifases laden en zijn direct open.
 - [ ] Meerkeuzevraag spelen werkt.
 - [ ] Volgordevraag spelen werkt.
 - [ ] Hints, levens, feedback en score werken.

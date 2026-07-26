@@ -97,27 +97,44 @@ export function validateContent(content: unknown): ContentValidationResult {
     missions.flatMap((mission) => isRecord(mission) && typeof mission.id === 'string' ? [mission.id] : []),
   );
   const linkedMissionIds = new Set<string>();
+  const linkedQuestionMissionIds = new Map<string, string[]>();
   for (const link of links) {
     if (!isRecord(link) || typeof link.missionId !== 'string') {
       continue;
     }
     linkedMissionIds.add(link.missionId);
     if (!missionIds.has(link.missionId)) {
-      errors.push({ code: 'unknown-mission', message: `Link verwijst naar onbekende missie ${link.missionId}.` });
+      errors.push({ code: 'unknown-mission', message: `Link verwijst naar onbekende fase ${link.missionId}.` });
     }
     const questionIds = Array.isArray(link.questionIds) ? link.questionIds : [];
     if (questionIds.length === 0) {
-      errors.push({ code: 'mission-no-questions', message: `Missie ${link.missionId} heeft geen vragen.` });
+      errors.push({ code: 'mission-no-questions', message: `Fase ${link.missionId} heeft geen vragen.` });
     }
     for (const questionId of questionIds) {
-      if (typeof questionId === 'string' && !seenQuestionIds.has(questionId)) {
-        errors.push({ code: 'unknown-question', message: `Missie ${link.missionId} verwijst naar onbekende vraag ${questionId}.` });
+      if (typeof questionId !== 'string') {
+        continue;
       }
+
+      linkedQuestionMissionIds.set(questionId, [
+        ...(linkedQuestionMissionIds.get(questionId) ?? []),
+        link.missionId,
+      ]);
+      if (!seenQuestionIds.has(questionId)) {
+        errors.push({ code: 'unknown-question', message: `Fase ${link.missionId} verwijst naar onbekende vraag ${questionId}.` });
+      }
+    }
+  }
+  for (const [questionId, missionIdsForQuestion] of linkedQuestionMissionIds) {
+    if (missionIdsForQuestion.length > 1) {
+      errors.push({
+        code: 'duplicate-mission-question-link',
+        message: `Vraag ${questionId} is gekoppeld aan meerdere fases: ${missionIdsForQuestion.join(', ')}.`,
+      });
     }
   }
   for (const missionId of missionIds) {
     if (!linkedMissionIds.has(missionId)) {
-      errors.push({ code: 'mission-no-link', message: `Missie ${missionId} heeft geen vraagkoppeling.` });
+      errors.push({ code: 'mission-no-link', message: `Fase ${missionId} heeft geen vraagkoppeling.` });
     }
   }
 

@@ -23,7 +23,7 @@ describe('App routes', () => {
     expect(screen.getByText('Train je beslissingen als degenscheidsrechter')).toBeInTheDocument();
   });
 
-  it('rendert het missieoverzicht via HashRouter', async () => {
+  it('rendert het faseoverzicht via HashRouter', async () => {
     setHash('#/missions');
 
     render(
@@ -33,7 +33,10 @@ describe('App routes', () => {
     );
 
     expect(
-      await screen.findByRole('heading', { level: 1, name: /Open de schermzaal/ }),
+      await screen.findByRole('heading', {
+        level: 1,
+        name: 'Kies een situatie uit de wedstrijddag',
+      }),
     ).toBeInTheDocument();
   });
 

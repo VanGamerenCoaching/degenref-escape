@@ -96,7 +96,7 @@ export interface GeneratedContent {
   source: {
     canonicalFile: string;
     supportingFiles: string[];
-    relationStrategy: 'mission-room-article-match';
+    relationStrategy: 'mission-room-article-match' | 'tournament-phase-article-map';
   };
   metadata: ContentMetadata;
   rooms: RoomContent[];

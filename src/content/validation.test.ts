@@ -82,6 +82,25 @@ describe('validateContent', () => {
     );
   });
 
+  it('weigert dubbele vraagkoppelingen tussen fases', () => {
+    const question = createQuestion({ id: 'q-shared' });
+    const result = validateContent(
+      createContent({
+        missions: [createMission({ id: 'mission-1' }), createMission({ id: 'mission-2' })],
+        questions: [question],
+        missionQuestionLinks: [
+          { missionId: 'mission-1', questionIds: ['q-shared'] },
+          { missionId: 'mission-2', questionIds: ['q-shared'] },
+        ],
+      }),
+    );
+
+    expect(result.valid).toBe(false);
+    expect(result.errors.map((error) => error.code)).toContain(
+      'duplicate-mission-question-link',
+    );
+  });
+
   it('formatteert fouten en waarschuwingen leesbaar voor scripts en laadschermen', () => {
     const result = validateContent(
       createContent({

@@ -18,7 +18,7 @@ describe('spelstromen', () => {
     window.localStorage.clear();
   });
 
-  it('doorloopt een volledige leermissie en ontgrendelt daarna de volgende missie', async () => {
+  it('doorloopt een volledige leerfase en bewaart afronding voor de volgende fase', async () => {
     const user = userEvent.setup();
     const content = await loadValidContent();
     const missionId = 'mission-01-salute-start';
@@ -26,7 +26,7 @@ describe('spelstromen', () => {
     const question = findSingleChoiceQuestion(content, missionId);
 
     if (nextMissionId === undefined) {
-      throw new Error('Geen tweede missie gevonden voor de ontgrendelingstest.');
+      throw new Error('Geen tweede fase gevonden voor de voortgangstest.');
     }
 
     seedActiveSession(content, {
@@ -160,7 +160,7 @@ describe('spelstromen', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Er zijn geen vragen beschikbaar met de huidige filters.'))
       .toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Start missie' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Start fase' })).toBeDisabled();
   });
 });
 
